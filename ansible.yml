@@ -28,9 +28,17 @@
       apt:
         autoremove: yes
 
-- hosts: cassandra
+- hosts: zk
+  - handlers:
+    - name: restart zookeeper
+      service: name=zookeeper state=restarted
+
   - tasks:
     - name: Add Zookeeper package
       apt:
         name: zookeeper
         state: present
+
+    - name: Copy configuration
+      template: src=zk.conf.j2 dest=/etc/zookeeper/conf/zoo.cfg
+      notify: restart zookeeper
