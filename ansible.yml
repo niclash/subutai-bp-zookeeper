@@ -1,0 +1,36 @@
+---
+
+- hosts: all
+  gather_facts: false
+  remote_user: root
+  tasks:
+
+    - name: Ensure python is available
+      apt:
+        name: python-minimal
+        allow_unauthenticated: yes
+
+    - name: Ensure python-apt is available
+      apt:
+        name: python-apt
+        allow_unauthenticated: yes
+
+    - name: Ensure python-apt is available
+      apt:
+        name: sudo
+        allow_unauthenticated: yes
+
+    - name: Remove useless packages from the cache
+      apt:
+        autoclean: yes
+
+    - name: Remove dependencies that are no longer required
+      apt:
+        autoremove: yes
+
+- hosts: cassandra
+  - tasks:
+    - name: Add Zookeeper package
+      apt:
+        name: zookeeper
+        state: present
