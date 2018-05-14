@@ -1,7 +1,7 @@
 {
   "name": "${environmentName}",
   "description": "Apache Zookeeper",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "author": "https://github.com/niclash",
   "ssh-key": "niclas",
   "containers": [
@@ -52,7 +52,7 @@
     "environmentName": {
       "description": "The name of the environment to create.",
       "type": "string",
-      "validation": "[a-zA-Z_+\\-][a-zA-Z0-9_+\\-]",
+      "validation": "[a-zA-Z_][a-zA-Z0-9_]*",
       "default": "zookeeper"
     },
     "instances": {
