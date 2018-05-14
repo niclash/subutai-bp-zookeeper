@@ -1,7 +1,7 @@
 {
   "name": "${Name Of Environment}",
   "description": "Apache Zookeeper",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "https://github.com/niclash",
   "ssh-key": "niclas",
   "containers": [
@@ -43,7 +43,7 @@
     ]
   },
   "user-variables": {
-    "tick_time": {
+    "Milliseconds per tick": {
       "description": "Milliseconds per tick",
       "type": "int",
       "validation": "[0-9]+",
