@@ -1,7 +1,7 @@
 {
   "name": "${Name Of Environment}",
   "description": "Apache Zookeeper",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "author": "https://github.com/niclash",
   "ssh-key": "niclas",
   "containers": [
@@ -46,7 +46,7 @@
     "tickTime": {
       "description": "Milliseconds per tick",
       "type": "int",
-      "validation": "[0-9]+",
+      "validation": "\\d+",
       "default": "2000"
     },
     "Name Of Environment": {
@@ -58,7 +58,7 @@
     "Number Of Instances": {
       "description": "Number of Zookeeper instances to be run. One instance per peer, and for consistency levels an odd number must be chosen. Allowed are one of 1,3,5,7,9",
       "type": "int",
-      "validation": "[13579]",
+      "validation": "\\d+",
       "default": "3"
     },
     "containerSize": {
@@ -70,13 +70,13 @@
     "init_limit": {
       "description": "Initial Synchronization limit (in ticks)",
       "type": "int",
-      "validation": "[0-9]+",
+      "validation": "\\d+",
       "default": "10"
     },
     "sync_limit": {
       "description": "Synchronization Limit (in ticks)",
       "type": "int",
-      "validation": "[0-9]+",
+      "validation": "\\d+",
       "default": "10"
     }
   }
