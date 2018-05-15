@@ -23,7 +23,7 @@ syncLimit={{ sync_limit }}
 # specify all zookeeper servers
 # The fist port is used by followers to connect to the leader
 # The second one is used for leader election
-{% for server in groups['zookeeper'] %}
+{% for server in groups['zk'] %}
 server.{{loop.index}}={{ hostvars[server]['ansible_all_ipv4_addresses'][0] }}:2888:3888
 {% endfor %}
 
