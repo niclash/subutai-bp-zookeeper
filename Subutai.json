@@ -18,7 +18,7 @@
   "peer-layout": [
     {
       "name": "zk",
-      "peer-count": "${instances}",
+      "peer-count": "3",
       "container-per-peer": "1"
     }
   ],
