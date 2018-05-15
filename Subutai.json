@@ -1,7 +1,7 @@
 {
   "name": "${environmentName}",
   "description": "Apache Zookeeper",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "author": "https://github.com/niclash",
   "ssh-key": "niclas",
   "containers": [

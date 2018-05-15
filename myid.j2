@@ -1,5 +1,5 @@
 {% for server in groups['zk'] %}
-{% if hostvars[server].['ansible_all_ipv4_addresses'][0] == ansible_hostname %}
+{% if hostvars[server]['ansible_all_ipv4_addresses'][0] == ansible_default_ipv4.address %}
 {{loop.index}}
 {% endif %}
 {% endfor %}

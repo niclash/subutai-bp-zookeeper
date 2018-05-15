@@ -5,7 +5,7 @@
   remote_user: root
   tasks:
 
-    - name: Ensure python is available
+    - name: Ensure python-minimal is available
       apt:
         name: python-minimal
         allow_unauthenticated: yes
@@ -15,29 +15,29 @@
         name: python-apt
         allow_unauthenticated: yes
 
-    - name: Ensure python-apt is available
+    - name: Ensure sudo is available
       apt:
         name: sudo
         allow_unauthenticated: yes
 
-    - name: Remove useless packages from the cache
-      apt:
-        autoclean: yes
-
-    - name: Remove dependencies that are no longer required
-      apt:
-        autoremove: yes
-
 - hosts: zk
+  remote_user: root
   handlers:
     - name: restart zookeeper
       service: name=zookeeper state=restarted
 
   tasks:
-    - name: Add Zookeeper package
-      apt:
-        name: zookeeper
-        state: present
+#    - name: Add Zookeeper package
+#      apt:
+#        name: zookeeper
+#        state: present
+
+    - debug:
+        var: ansible_default_ipv4.address
+    - debug:
+        var: groups['zk']
+    - debug:
+        var: hostvars['10.203.58.1']['ansible_all_ipv4_addresses']
 
     - name: Copy myid
       template: src=myid.j2 dest=/etc/zookeeper/conf/myid
