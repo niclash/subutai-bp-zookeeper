@@ -15,7 +15,7 @@
       ]
     }
   ],
-  "peer-layout": [
+  "peer-layouts": [
     {
       "name": "zk",
       "peer-count": "3",
@@ -59,7 +59,7 @@
     ],
     "groups": [
       {
-        "name": "zookeeper",
+        "name": "zk",
         "hostnames": [
           "zookeeper"
         ]
