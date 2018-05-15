@@ -32,6 +32,30 @@
     "source-url": "https://github.com/niclash/subutai-bp-zookeeper/archive/master.zip",
     "ansible-playbook": "ansible.yml",
     "extra-vars": [
+      {
+        "key": "tick_time",
+        "value": "${tickTime}"
+      },
+      {
+        "key": "init_limit",
+        "value": "${initLimit}"
+      },
+      {
+        "key": "sync_limit",
+        "value": "${syncLimit}"
+      },
+      {
+        "key": "pre_alloc_size",
+        "value": "${preAllocSize}"
+      },
+      {
+        "key": "global_outstanding_limit",
+        "value": "${globalOutstandingLimit}"
+      },
+      {
+        "key": "snap_count",
+        "value": "${snapCount}"
+      }
     ],
     "groups": [
       {
@@ -43,23 +67,17 @@
     ]
   },
   "user-variables": {
-    "tickTime": {
-      "description": "Milliseconds per tick",
-      "type": "int",
-      "validation": "\\d+",
-      "default": "2000"
-    },
     "environmentName": {
       "description": "The name of the environment to create.",
       "type": "string",
       "validation": "[a-zA-Z_][a-zA-Z0-9_]*",
       "default": "zookeeper"
     },
-    "initLimit": {
-      "description": "Initial Synchronization limit (in ticks)",
-      "type": "int",
-      "validation": "\\d+",
-      "default": "10"
+    "containerSize": {
+      "description": "Container Size",
+      "type": "enum",
+      "default": "MEDIUM",
+      "validation": "TINY,SMALL,MEDIUM,LARGE,HUGE"
     },
     "instances": {
       "description": "Number of Zookeeper instances to be run. One instance per peer, and for consistency levels an odd number must be chosen. Allowed are one of 1,3,5,7,9",
@@ -67,17 +85,41 @@
       "validation": "\\d+",
       "default": "3"
     },
+    "tickTime": {
+      "description": "Milliseconds per tick",
+      "type": "int",
+      "validation": "\\d+",
+      "default": "2000"
+    },
+    "preAllocSize": {
+      "description": "To avoid seeks ZooKeeper allocates space in the transaction log file in blocks of preAllocSize kilobytes. The default block size is 64M. One reason for changing the size of the blocks is to reduce the block size if snapshots are taken more often. ",
+      "type": "int",
+      "validation": "\\d+",
+      "default": "65536"
+    },
+    "globalOutstandingLimit": {
+      "description": "Clients can submit requests faster than ZooKeeper can process them, especially if there are a lot of clients. To prevent ZooKeeper from running out of memory due to queued requests, ZooKeeper will throttle clients so that there is no more than globalOutstandingLimit outstanding requests in the system. The default limit is 1,000.",
+      "type": "int",
+      "validation": "\\d+",
+      "default": "1000"
+    },
+    "snapCount": {
+      "description": "ZooKeeper logs transactions to a transaction log. After snapCount transactions are written to a log file a snapshot is started and a new transaction log file is started. The default limit is 10,000.",
+      "type": "int",
+      "validation": "\\d+",
+      "default": "10000"
+    },
+    "initLimit": {
+      "description": "Initial Synchronization limit (in ticks)",
+      "type": "int",
+      "validation": "\\d+",
+      "default": "10"
+    },
     "syncLimit": {
       "description": "Synchronization Limit (in ticks)",
       "type": "int",
       "validation": "\\d+",
       "default": "10"
-    },
-    "containerSize": {
-      "description": "Container Size",
-      "type": "enum",
-      "default": "MEDIUM",
-      "validation": "TINY,SMALL,MEDIUM,LARGE,HUGE"
     }
   }
 }

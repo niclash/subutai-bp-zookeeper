@@ -39,6 +39,10 @@
         name: zookeeper
         state: present
 
+    - name: Copy myid
+      template: src=myid.j2 dest=/etc/zookeeper/conf/myid
+      notify: restart zookeeper
+
     - name: Copy configuration
       template: src=zk.conf.j2 dest=/etc/zookeeper/conf/zoo.cfg
       notify: restart zookeeper

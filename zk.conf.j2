@@ -32,17 +32,20 @@ server.{{loop.index}}={{ hostvars[server]['ansible_all_ipv4_addresses'][0] }}:28
 # blocks of preAllocSize kilobytes. The default block size is 64M. One reason
 # for changing the size of the blocks is to reduce the block size if snapshots
 # are taken more often. (Also, see snapCount).
-#preAllocSize=65536
+preAllocSize={{ pre_alloc_size }}
 
 # Clients can submit requests faster than ZooKeeper can process them,
 # especially if there are a lot of clients. To prevent ZooKeeper from running
 # out of memory due to queued requests, ZooKeeper will throttle clients so that
 # there is no more than globalOutstandingLimit outstanding requests in the
-# system. The default limit is 1,000.ZooKeeper logs transactions to a
+# system. The default limit is 1,000.
+globalOutstandingLimit={{global_outstanding_limit}}
+
+# ZooKeeper logs transactions to a
 # transaction log. After snapCount transactions are written to a log file a
-# snapshot is started and a new transaction log file is started. The default
-# snapCount is 10,000.
-#snapCount=1000
+# snapshot is started and a new transaction log file is started.
+# The default limit is 10,000.
+snapCount={{ snap_count }}
 
 # If this option is defined, requests will be will logged to a trace file named
 # traceFile.year.month.day.
