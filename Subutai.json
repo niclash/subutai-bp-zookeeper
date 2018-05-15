@@ -18,7 +18,7 @@
   "peer-layouts": [
     {
       "name": "zk",
-      "peer-count": "3",
+      "peer-count": "${instances}",
       "container-per-peer": "1"
     }
   ],
@@ -82,7 +82,7 @@
     "instances": {
       "description": "Number of Zookeeper instances to be run. One instance per peer, and for consistency levels an odd number must be chosen. Allowed are one of 1,3,5,7,9",
       "type": "int",
-      "validation": "\\d+",
+      "validation": "[13579]",
       "default": "3"
     },
     "tickTime": {
