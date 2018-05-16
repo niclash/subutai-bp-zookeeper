@@ -36,8 +36,6 @@
         var: ansible_default_ipv4.address
     - debug:
         var: groups['zk']
-    - debug:
-        var: hostvars['ansible_default_ipv4'].address
 
     - name: Copy myid
       template: src=myid.j2 dest=/etc/zookeeper/conf/myid
