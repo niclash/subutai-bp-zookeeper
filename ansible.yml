@@ -37,7 +37,7 @@
     - debug:
         var: groups['zk']
     - debug:
-        var: hostvars['10.203.58.1']['ansible_all_ipv4_addresses']
+        var: hostvars['ansible_default_ipv4'].address
 
     - name: Copy myid
       template: src=myid.j2 dest=/etc/zookeeper/conf/myid
