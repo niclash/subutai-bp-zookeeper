@@ -29,7 +29,7 @@
   tasks:
     - name: Add Zookeeper package
       apt:
-        name: zookeeper
+        name: zookeeperd
         state: present
 
     - debug:
