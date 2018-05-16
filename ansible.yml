@@ -27,10 +27,10 @@
       service: name=zookeeper state=restarted
 
   tasks:
-#    - name: Add Zookeeper package
-#      apt:
-#        name: zookeeper
-#        state: present
+    - name: Add Zookeeper package
+      apt:
+        name: zookeeper
+        state: present
 
     - debug:
         var: ansible_default_ipv4.address
