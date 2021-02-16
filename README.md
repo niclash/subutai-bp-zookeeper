@@ -1,4 +1,4 @@
-# subutai-bp-cassandra
+Zookeeper blueprint for Subutai
 
 
 
